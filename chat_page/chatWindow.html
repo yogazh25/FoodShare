@@ -1,0 +1,54 @@
+<html>
+	<head>
+
+		<link rel="stylesheet" href="chatWindow.css">
+		<link rel="stylesheet" href="myAlert.css">
+		<script src="./jsLib/jquery/jquery.min.js"></script>
+
+	</head>
+	<body>
+		<div id="chatContainer">
+	    	<div id="chatTopBar" class="rounded">
+	    		<span id="to_chat_user_name" >Chatting Page!</span>
+	    	</div>
+	    	<!--===========Left bar: friend list================-->
+   		    <div id="chatUsers" >
+   		    	<div class="contact">
+					  <img src="../face.png" alt="" class="contact__photo" />
+					  <span class="contact__name" id ="to_chat_user_list" onclick="showChatWindow();">Ethan Hawke</span>
+				</div>
+   		    </div>
+
+	    	<!--===========Right Top: chat content================-->
+   		    <div id="chatLineHolder">
+   		    	<div class="chatContent"  id= "chatting"><!--
+   		    		<div class="notMyMsg" id="notMyMsg">
+   		    			<img src="../face.png" alt="" class="contact__photo" />
+   		    			<span class="contact_content" id="notMine">Hello! how r u!</span>
+   		    		</div>
+   		    		<div class="myMsg" id="myMsg">
+   		    			<span class="contact_content" id="Mine">Fine, thx!</span>
+   		    			<img src="../face.png" alt="" class="contact__photo" />
+   		    		</div>-->
+   		    	</div>
+
+		    <!--===========Right bottom: chat input================-->
+   		    	<div class="inputChat">
+   		    		<textarea id="chat_input" placeholder="Press Enter to send; Press Ctrl+Enter to change line!" required style="resize:none;"></textarea>
+   		    	</div>
+   		    </div>
+
+   		    <!--Right End-->
+		    <div id="chatBottomBar" class="rounded">		        
+		        <form id="SearchForm" method="post" action="">
+		        	<img src="find_c.png" alt="" class="contact__photo" style="display:inline" />
+		            <input id="name_keyword" type="text" name="search_chat_name" class="rounded" placeholder="search for your friend" onkeyup="search_friends()" "display:inline" />
+		        </form>
+		    </div>
+		</div>
+
+		<script src="chatWindow.js"></script>
+		<script src="myAlert.js"></script>
+
+	</body>
+</html>

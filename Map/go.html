@@ -1,0 +1,30 @@
+<html>
+	<head>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+	</head>
+	<body>
+		<h1>1</h1>
+		<div id="moon"></div>
+		<script>
+		//$("moon").load("googlemap2.html");
+		
+		</script>
+		<script >
+			$(document).ready(function(){
+				bodyContent = $.ajax({
+					  url: "googlemap2.html.html",
+					  global: false,
+					  type: "POST",
+					  data: ({id : this.getAttribute('aContent')}),
+					  dataType: "html",
+					  async:false,
+					  success: function(msg){
+						alert(1);
+						 alert(msg);
+					  }
+				   }
+				)
+			});
+		</script>
+	</body>
+</html>

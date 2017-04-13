@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Check the Location</title>
+		<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+		<meta charset="utf-8">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+		<style>
+			html, body {
+			height: 100%;
+			margin: 0;
+			padding: 0;
+			}
+			#map {
+			height: 100%;
+			}
+		</style>
+		<script>
+		
+			
+			/**/
+			/*
+			function parseQueryString(str) {
+				var reg = /(([^?&=]+)(?:=([^?&=]*))*)/g;
+				var result = {};
+				var match;
+				var key;
+				var value;
+				while (match = reg.exec(str)) {
+					key = match[2];
+					value = match[3] || '';
+					result[key] = decodeURIComponent(value);
+				}
+				return result;
+			}
+			*/
+			var map;
+			var infowindow;
+			var longitude;
+			var latitude;
+			function parseQueryString(str) {
+				var reg = /(([^?&=]+)(?:=([^?&=]*))*)/g;
+				var result = {};
+				var match;
+				var key;
+				var value;
+				while (match = reg.exec(str)) {
+					key = match[2];
+					value = match[3] || '';
+					result[key] = decodeURIComponent(value);
+				}
+				return result;
+			}
+
+			function initMap() {
+				var src = window.location.href; 
+				var I1 = src.substr(src.indexOf("?longitude=") + 4).length; 
+				var T1 = src.indexOf("?longitude="); 
+				//alert(src); 
+				if (0 >= T1) return ""; 
+				if (I1 == src.length) return -1; 
+				var frank1 = src.indexOf("latitude=")-src.indexOf("?longitude=") - 1;
+				var frank2 = src.length - src.indexOf("latitude=");
+				var longitude = src.substr(src.indexOf("?longitude=") + 11, frank1 - 11);
+				var latitude = src.substr(src.indexOf("latitude=") + 9, frank2 - 9);
+				//alert(longitude);
+				//alert(latitude);
+				
+				var pyrmont = {lat: Number(longitude), lng: Number(latitude)};
+
+
+				map = new google.maps.Map(document.getElementById('map'), {
+				center: pyrmont,
+				zoom: 17
+				});
+
+				infowindow = new google.maps.InfoWindow();
+
+				var service = new google.maps.places.PlacesService(map);
+				service.nearbySearch({
+				location: pyrmont,
+				radius: 200,
+				types: ['store']
+				}, callback);
+				}
+
+				function callback(results, status) {
+				if (status === google.maps.places.PlacesServiceStatus.OK) {
+				for (var i = 0; i < results.length; i++) {
+				  createMarker(results[i]);
+				}
+				}
+				}
+
+				function createMarker(place) {
+				var placeLoc = place.geometry.location;
+				var marker = new google.maps.Marker({
+				map: map,
+				position: place.geometry.location
+				});
+
+				google.maps.event.addListener(marker, 'click', function() {
+				infowindow.setContent(place.name);
+				infowindow.open(map, this);
+				});
+			}
+
+		</script>
+	</head>
+	<body>
+		<div id="map"></div>
+		<script src="get_loc.js"></script>
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAaw6H1MITmzcktfXQMGO8XX2UCxkAF3mA&signed_in=true&libraries=places&callback=initMap" async defer></script>
+	</body>
+</html>

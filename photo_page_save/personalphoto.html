@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="renderer" content="webkit">
+  <meta http-equiv = "X-UA-Compatible" content = "IE=edge,chrome=1" />
+  <meta charset="UTF-8">
+  <meta HTTP-EQUIV="pragma" CONTENT="no-cache"> 
+  <meta HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate"> 
+  <meta HTTP-EQUIV="expires" CONTENT="0">
+  <title>Personal photo</title>
+  <link rel="Stylesheet" type="text/css" href="./css/Personalphoto.css" />
+  <link rel='Stylesheet' type='text/css' href='./jsLib/jquery/Jcrop/jquery.Jcrop.min.css'>
+  <script src="./jsLib/jquery/jquery.min.js"></script>
+  <script src="./jsLib/jquery/ajaxfileupload.js"></script>
+  <script type="text/javascript" src="./jsLib/jquery/cropbox.js"></script>
+  <script type="text/javascript" src="./js/home/InitPersonalPhoto.js"></script>
+	<link rel="stylesheet" href="./jsLib/SweetAlert/sweetalert.css" type='text/css'>
+	<script type="text/javascript" src="./jsLib/SweetAlert/sweetalert.min.js"></script>
+  <script type="text/javascript">
+  	var modelUrl = "/custom/personal_photo";
+  </script>
+</head>
+
+<body>
+	<div class='title_box'>
+	  <div style="display:inline-block;width:15px;height:15px;">
+	    <img style="width:15px;height:15px;margin-left:-10px;" src ="./img/icon/base.png">
+	  </div>
+	    Personal Photo Upload
+	</div>
+  	  <div class='Page-box clearfix' id='Page2'>
+    
+    <div class='head' >
+      <p>Update Your Photo !</p>	
+    </div>
+    
+    <div class='form-box' >
+      <div class='Old'>
+        <p>Current</p>
+        <div class='photo' style='width: 120px;height: 120px;margin: 0 auto;'>
+          <img id = 'currentphoto' src='../face.png' alt='' style="width:100%;height:100%">
+        </div>	        
+      </div>
+      
+      <div class='New'>
+        <div class="container">
+		  <div class="imageBox">
+		    <div class="thumbBox"></div>
+		    <div class="spinner" style="display: none"></div>
+		  </div>
+		  <div class="action"> 
+		    <!-- <input type="file" id="file" style=" width: 200px">-->
+		    <div class="new-contentarea tc"> <a href="javascript:void(0)" class="upload-img">
+		      <label for="upload-file">Select</label>
+		      </a>
+		      <input type="file" name="upload-file" id="upload-file" style="cursor: pointer"/>
+		    </div>
+		    <input type="button"  id="btnOK"  class="Btnsty_peyton" value="OK">
+		    <input type="button" id="btnZoomIn" class="Btnsty_peyton" value="+"  >
+		    <input type="button" id="btnZoomOut" class="Btnsty_peyton" value="-" >
+		  </div>
+		</div>
+      </div>
+    </div>
+	<div class="help">
+      <p style="text-align: center; color: #bb0000; font-weight: 600;">Something You Should Know!</p>
+      <p style="color: #333;"><span>1.</span> You can crop your uploaded photo if needed!</p>
+      <p style="color: #333;"><span>2.</span> Do <span style="color:red">NOT </span>upload illegal photos!</p>
+    </div>
+	<textarea id = 'base64' ></textarea>
+  </div>
+</body>
+</html>

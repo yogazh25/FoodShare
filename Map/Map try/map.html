@@ -1,0 +1,27 @@
+<!DOCTYPE HTML> 
+<html> 
+<head> 
+<!-- 以下这段代码是googlemap官方建议的，它让用户禁止利用浏览器的放大缩小窗口功能，而使用googlemap自己的缩放功能 --> 
+<meta name="viewport" content="initial-scale=1.0,user-scalable=no"/> 
+<title>在页面上使用Google Map，获取浏览器的当前位置</title> 
+ 
+<!-- 因为页面上要使用到google地图，所以导入googlemap地图文件 --> 
+<script type="text/javascript" src="http://maps.google.com/maps?q=25.1023554,121.54849250000007"></script> 
+ 
+<!-- 这段js文件是我自己写的，用于利用HTML5的geolocation API获得当前位置，并且在google地图上标识出来 --> 
+<script type="text/javascript" src="js/googlemap.js"></script> 
+   
+</head> 
+ 
+<body onload="init()"> 
+Hello,Google Map! 
+<br> 
+<!-- 这一个正方形区域是用来画google地图的 --> 
+<div id="map"style="width: 400px; height: 400px"></div> 
+<br> 
+<!-- 这一个区域是用来显示你的位置信息的 --> 
+<h3>您的浏览器显示了您当前的地理位置信息是:</h3> 
+<p id="positionInfo"></p> 
+</body> 
+ 
+</html> 

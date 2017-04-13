@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="renderer" content="webkit">
+		<meta http-equiv = "X-UA-Compatible" content = "IE=edge,chrome=1" />
+		<meta charset="UTF-8">
+		<title>Searching</title>
+		<link href="./css/searchPeople.css" rel="stylesheet">
+		<link rel="Stylesheet" type="text/css" href="./css/bootstrap/bootstrap.min.css" />
+		<link rel="Stylesheet" type="text/css" href="./css/bootstrap/bootstrap-table.css" />
+		<link rel="Stylesheet" type="text/css" href="./css/bootstrap/bootstrap-table-filter.css" />
+		<link rel="stylesheet" type="text/css" href="./jsLib/tooltipster-master/css/tooltipster.css" />
+		<link rel="stylesheet" type="text/css" href="./jsLib/tooltipster-master/css/themes/tooltipster-noir.css" />
+		<link rel="Stylesheet" type="text/css" href="./jsLib/myAlert/myAlert.css"/>
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+		<link href="./css/bootstrap/bootstrap.min.css" rel="stylesheet">
+		<link href="./jsLib/PersonCard/personCard.css" rel="stylesheet">
+
+		<script src="./jsLib/jquery/jquery.min.js"></script>
+		<script src="./jsLib/bootstrap/bootstrap.min.js"></script> 
+		<script type="text/javascript" src="./jsLib/tooltipster-master/js/jquery.tooltipster.min.js"></script>
+		<!--<script src="./jsLib/PersonCard/personCard.js"></script>-->
+
+		<!-- 以下库用于输入检索的select option -->
+		<link rel="Stylesheet" type="text/css" href="./jsLib/jquery-select/css/combo.select.css" />
+		<!--<link rel="Stylesheet" type="text/css" href="./jsLib/jquery-select/css/default.css" />-->
+
+		<script type="text/javascript">
+			var app_url = "";
+			var public_url = "/Public";
+			var model_url = "/custom/search_people";
+			var allAcademy;
+			var allSelectedDirection = new Array();
+			var allSelectedAbility = new Array();
+		</script>
+	</head>
+	<body>	
+<!--		<div style='position: fixed; top: 0px;'>hello</div>-->
+		<nav class="navbar navbar-default" role="navigation" style="margin-bottom:0;position:relative;">
+			<div class="navbar-header">
+				<a class="navbar-brand" >Find</a>
+			</div>
+			<div class="navContainer">
+				<!--向左对齐-->
+				<ul class="nav navbar-nav navbar-left">
+  
+					<li style="margin-top: 15px;">
+						<form  class="demo-form keywordSearchScope">
+							<select id = "scope" name="dt1" required class="scopeSearchSelect" style= "margin-right:5px">
+								<option value="">Search Scope...</option>
+								<option value="">Friends</option>
+								<option value="">FOF</option>
+								<option value="">All People</option>
+							</select>
+						</form>
+					</li>
+			
+					<li style="margin-top: 15px;">
+						<form  class="demo-form keywordSearchType">
+							<select id = "search_type" name="dt2" required class="typeSearchSelect" style= "margin-right:5px">
+								<option value="">Search Type...</option>
+								<option value="">Profile</option>
+								<option value="">Posting</option>
+							</select>
+						</form>
+					</li>
+			
+					<li style="margin-top: 15px;">
+						<form  class="demo-form academySearchForm">
+							<select id = "start_point" name="dt3" required class="academySearchSelect" style= "margin-right:5px">
+								<option value="">Start From...</option>
+								<option value="">Today</option>
+								<option value="">Last three days</option>
+								<option value="">Last seven days</option>
+								<option value="">Last month</option>
+								<option value="">Last year</option>
+							</select>
+						</form>
+					</li>
+					
+					<li style="margin-top: 15px;">
+						
+					</li>
+					
+				</ul>
+				
+      <!--向右对齐-->
+				<ul class="nav navbar-nav navbar-right" style="margin: 0px auto;">
+				
+					<span id="searchTextForm" class="navbar-form navbar-left" >
+						<div class="form-group">
+							<input type="text" id="keyword"  placeholder="Search Keyword" style="width:250px">
+							<div id="searchResult" style="display:none"><div class="searchResultClose">×</div><div id="searchResultContent" ></div></div>
+							<button = "upsubmit" onclick="search()">SEARCH</button>
+						</div>
+					</span>  
+				</ul>
+			</div>
+		</nav>
+
+
+		<div class="selectedCondition">
+			<div class="row selectedConditionRow" style="margin-left:10px;padding-top:10px;">
+				<b>Search Constraint：</b><span id="Search Constraint"></span>
+			</div>
+		</div>
+
+		<div class="tableContent" id="resultContainer"></div>
+											   
+<!--		<script src="./jsLib/jquery-select/js/jquery.combo.select.js"></script>  -->
+
+		<script src="./js/search.js"></script>
+	</body>
+</html>

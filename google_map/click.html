@@ -1,0 +1,111 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false" mce_src="http://maps.google.com/maps/api/js?sensor=false"></script>
+</head>
+<body>
+ 
+    <div id="map" style="width:100%; height: 600px; border: 1px solid black;"></div>
+    <div>
+         座　　標：
+                 <input type="text" name="lng" id="lng" style="width: 80px;"  value="112.98863989999995" />，
+                 <input type="text" name="lat" id="lat" style="width: 80px;"  value="26.8252901" />
+         地　　址：<br />
+                <textarea name="address" id="address" cols="45" rows="9">中国湖南省衡阳市衡南县花桥镇衡南八中</textarea>
+    </div>
+<script language="javascript" type="text/javascript">
+    var map;
+    var marker;
+    var infowindow;
+    var geocoder;
+    var markersArray = [];
+
+    function initialize() {
+        //设置中心点
+        var latlng = new google.maps.LatLng(26.8252901, 112.98863989999995);
+        var myOptions = {
+            zoom: 13,
+            center: latlng,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        map = new google.maps.Map(document.getElementByIdx_x("map"), myOptions);
+        geocoder = new google.maps.Geocoder();
+        //监听点击地图事件
+        google.maps.event.addListener(map, 'click', function (event) {
+            placeMarker(event.latLng);
+        });
+    }
+
+    function placeMarker(location) {
+        clearOverlays(infowindow);//清除地图中的标记
+        marker = new google.maps.Marker({
+            position: location,
+            map: map
+        });
+        markersArray.push(marker);
+        //根据经纬度获取地址
+        if (geocoder) {
+            geocoder.geocode({ 'location': location }, function (results, status) {
+                if (status == google.maps.GeocoderStatus.OK) {
+                    if (results[0]) {
+                        attachSecretMessage(marker, results[0].geometry.location, results[0].formatted_address);
+                    }
+                } else {
+                    alert("Geocoder failed due to: " + status);
+                }
+            });
+        }
+    }
+    //在地图上显示经纬度地址
+    function attachSecretMessage(marker, piont, address) {
+        var message = "<b>座標:</b>" + piont.lat() + " , " + piont.lng() + "<br />" + "<b>地址:</b>" + address;
+        var infowindow = new google.maps.InfoWindow(
+            {
+                content: message,
+                size: new google.maps.Size(50, 50)
+            });
+        infowindow.open(map, marker);
+        if (typeof (mapClick) == "function") mapClick(piont.lng(), piont.lat(), address);
+    }
+    //删除所有标记阵列中消除对它们的引用
+    function clearOverlays(infowindow) {
+        if (markersArray && markersArray.length > 0) {
+            for (var i = 0; i < markersArray.length; i++) {
+                markersArray[i].setMap(null);
+            }
+            markersArray.length = 0;
+        }
+        if (infowindow) {
+            infowindow.close();
+        }
+    }
+    function setiInit() {
+        // 页面加载显示默认lng lat address---begin
+        var lattxt = document.getElementByIdx_x("lat").value;
+        var lngtxt = document.getElementByIdx_x("lng").value;
+        var addresstxt = document.getElementByIdx_x("address").value;
+        if (lattxt != '' && lngtxt != '' && addresstxt != '') {
+            var latlng = new google.maps.LatLng(lattxt, lngtxt);
+            marker = new google.maps.Marker({
+                position: latlng,
+                map: map
+            });
+            markersArray.push(marker);
+            attachSecretMessage(marker, latlng, addresstxt);
+        }
+        // ---end
+    }
+    function mapClick(lng, lat, address) {
+        document.getElementByIdx_x("lng").value = lng;
+        document.getElementByIdx_x("lat").value = lat;
+        document.getElementByIdx_x("address").value = address;
+    }
+    initialize();
+    window.onload = function () {
+        setiInit();
+    }
+</script>
+
+</body>
+</html>

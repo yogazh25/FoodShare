@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+		<link rel="Stylesheet" type="text/css" href="./jsLib/myAlert/myAlert.css"/>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+		<script src="./jsLib/myAlert/myAlert.js"></script>
+		<link rel="stylesheet" href="./jsLib/SweetAlert/sweetalert.css" type='text/css'>
+			<script type="text/javascript" src="./jsLib/SweetAlert/sweetalert.min.js"></script>
+		<style type="text/css">
+			.user-row {
+				margin-bottom: 14px;
+			}
+			
+			.user-row:last-child {
+				margin-bottom: 0;
+			}
+			
+			.dropdown-user {
+				margin: 13px 0;
+				padding: 5px;
+				height: 100%;
+			}
+			
+			.dropdown-user:hover {
+				cursor: pointer;
+			}
+			
+			.table-user-information > tbody > tr {
+				border-top: 1px solid rgb(221, 221, 221);
+			}
+			
+			.table-user-information > tbody > tr:first-child {
+				border-top: 10px;
+			}
+			
+			.table-user-information > tbody > tr > td {
+				border-top: 10px;
+			}
+			
+			.toppad {
+				margin-left: 20px;
+			}
+			/*
+			.panel-heading {
+				background-color: #ccc;
+			}
+	*/
+			.btn {
+				position: absolute;
+				display: block;
+				left: 570px;
+				top: 180px;
+				height: 35px;
+				width: 85px;
+				color: white;
+				border: none;
+				background: #2b99ce;
+				font-weight: 450;
+				letter-spacing: 1px;
+				text-align: center;
+			}
+			
+			.btn1 {
+				position: relative;
+				display: inline-block;
+				height: 25px;
+				width: 55px;
+				color: white;
+				border: none;
+				background: #2b99ce;
+				font-weight: 450;
+				letter-spacing: 1px;
+				text-align: center;
+			}
+			
+			.btn2 {
+				position: absolute;
+				display: inline-block;
+				left: 420px;
+				top: -110px;
+				height: 25px;
+				width: 55px;
+				border: none;
+				font-weight: 450;
+			}
+			
+			.btn:hover {
+				background: #3ba9de;
+			}
+
+			.t_area{ 
+				
+				overflow:auto ;
+				width:100%; 
+				height:100%; 
+			}
+			
+			 #map {
+			height: 500px;
+			width : 100%;
+		  }
+		  
+			.controls {
+			  margin-top: 10px;
+			  border: 1px solid transparent;
+			  border-radius: 2px 0 0 2px;
+			  box-sizing: border-box;
+			  -moz-box-sizing: border-box;
+			  height: 32px;
+			  outline: none;
+			  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+			}
+
+			#pac-input {
+			  background-color: #fff;
+			  font-family: Roboto;
+			  font-size: 15px;
+			  font-weight: 300;
+			  margin-left: 12px;
+			  padding: 0 11px 0 13px;
+			  text-overflow: ellipsis;
+			  width: 300px;
+			}
+
+			#pac-input:focus {
+			  border-color: #4d90fe;
+			}
+
+			.pac-container {
+			  font-family: Roboto;
+			}
+
+			#type-selector {
+			  color: #fff;
+			  background-color: #4d90fe;
+			  padding: 2px 6px 15px 6px;
+			}
+
+			#type-selector label {
+			  font-family: Roboto;
+			  font-size: 13px;
+			  font-weight: 300;
+			}
+
+		</style>
+		<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+		<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+	</head>
+
+	<body style="background-color:transparent">
+		<!--drawing the container of user's profile begin!-->
+		<div class="container" style='float:left'>
+			<div class="row">
+				<div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 col-xs-offset-0 col-sm-offset-0 col-md-offset-0 col-lg-offset-0 toppad">
+					<div class="panel panel-info">
+						<div class="panel-heading">
+							<h3 class="panel-title"> 
+								<span id = "title" style="display:inline" > <input type="text" name = "name" class="form-control" id="news_title" placeholder="Post title cannot be empty!" onkeyup="limitTitleLength()"  ><span ><span  id="title_length" >0</span>/30</span>	</span>				
+							</h3>
+						</div>
+						<div class="panel-body">
+							<div class="row">
+								<div class=" col-md-12 col-lg-12 ">
+									<span id = "content" ><textarea class="form-control" rows="6" id="news_content" placeholder="What's on your mind?" required style="resize:none;" onkeyup="limitContentLength()"></textarea><span id="content_length" >0</span>/500</span></br>            
+								</div>
+							</div>
+							<span id = "Media_content">
+							<!--<div class="col-md-12 col-lg-12" id="preview" style="margin-bottom:10px">\
+									<img alt="User Photo" id = "news_photo" src="../Media/post media/1/favourite.jpg"  style="width:70%;">\
+								</div>-->
+							</span>
+							<!--	
+							<div class="col-md-12 col-lg-12" id ='video_box' style="margin-bottom:10px" >
+								<video id = "news_film" style="display:block;width:70%;" controls>
+									<source id="post_video" src="../Media/post media/1/1.mp4" type="video/mp4">
+								</video>
+							</div>
+								-->
+							<div class=" col-md-12 col-lg-12 ">
+								<hr style="width:100%;">
+								<ul class="nav navbar-nav navbar-left">
+								  
+									<!-- <a href="#" style="display:inline">
+									<span class="glyphicon glyphicon-camera" id="photo_icon"></span>
+									</a> -->
+									<!-- <input class="glyphicon glyphicon-camera" id="photo_icon" type="buttom" onclick="previewImage(this)" />  -->    
+							
+									<span class="glyphicon glyphicon-camera" style="padding:0 0 0 0;"/><input title="image" id = "input_image" style="display:inline;padding: 0 20px 20px 10px;" type="file" onchange="previewImage(this)" />
+									<input style="display:inline;" id="delete_pic_btn" class="btn1" type="button" value="Delete" onclick='clear_image_box()'/>
+									
+									<span class="glyphicon glyphicon-film" style="padding:0 0 0 0;"/><input title="video" id = "input_video" style="display:inline;padding: 0 20px 20px 10px" type="file" onchange="previewVideo(this)"/> 
+									<input style="display:inline;" id="delete_video_btn" class="btn1" type="button" value="Delete"  onclick='clear_video_box()'/><!--onclick='clear_video_box()'-->
+									
+								  
+									<span class="glyphicon glyphicon-map-marker" style="padding:0 0 0 0;"/>
+									<span style="padding: 0 10px 0 0;"  id="location_icon">  
+										<ul style="padding: 0 0 20px 0">
+											<input type="text" name = "news_location"  id="news_location" style="width:35%"placeholder="Location："></input> 
+											<input type="text" name = "news_city"  id="news_city" style="width:20%" placeholder="city"></input>
+											<input type="text" name = "news_state"  id="news_state" style="width:12.5%" placeholder="state"></input>
+										</ul>
+										<ul style="padding: 0 0 20px 0">
+											<input type="text" name = "news_longitude"  style="width:35%" id="news_longitude" placeholder="longitude"></input>
+											<input type="text" name = "news_latitude"  style="width:35%"id="news_latitude" placeholder="latitude"></input>
+										</ul>
+									</span>
+									
+								</ul>
+								
+								<div class="btn2"  style="position:relative;display:inline;font-size:20px">View Priority :
+									<form  class="" style="margin-bottom:20px;display:inline;">
+										<select id = "priority_icon" name="dt1" required class="scopeSearchSelect">
+											<option value="">All</option>
+											<option value="">FOF</option>
+											<option value="">Firends</option>
+											<option value="">Only Me</option>
+										</select>
+									</form>
+								</div> 	
+								<input id="news_post_btn" class="btn" type="button" value="POST" onclick = "post_news();" disabled=" "></input>
+								
+							</div>    
+						</div>
+					</div>
+
+					<input id="pac-input" class="controls" type="text" placeholder="Enter a location" style="background-color:white;color:black">
+					<div id="type-selector" class="controls">
+						<input type="radio" name="type" id="changetype-geocode" checked="checked"  style="display:none" >
+						<label for="changetype-geocode"  style="display:none">Geocodes</label>
+						<input style = "color:black;font-size:14px" id= 'auto_fillin' type='button' value='Use This Location' onclick = 'get_place_info()' />
+					</div>
+					<div id="map"></div>
+
+				</div>
+			</div>
+		</div>
+		<script src="writeNewPost.js"></script>
+	
+		
+	
+<!--======================================================================-->
+		<script>
+			var place_result;
+			function initMap() {
+			  var map = new google.maps.Map(document.getElementById('map'), {
+				center: {lat: 40.6944198, lng: -73.9865838},
+				zoom: 13
+			  });
+			  var input = /** @type {!HTMLInputElement} */(
+				  document.getElementById('pac-input'));
+
+			  var types = document.getElementById('type-selector');
+			  map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+			  map.controls[google.maps.ControlPosition.TOP_LEFT].push(types);
+
+			  var autocomplete = new google.maps.places.Autocomplete(input);
+			  autocomplete.bindTo('bounds', map);
+
+			  var infowindow = new google.maps.InfoWindow();
+			  var marker = new google.maps.Marker({
+				map: map,
+				anchorPoint: new google.maps.Point(0, -29)
+			  });
+
+			  autocomplete.addListener('place_changed', function() {
+				place_result = null;
+				infowindow.close();
+				marker.setVisible(false);
+				var place = autocomplete.getPlace();
+				if (!place.geometry) {
+				  //window.alert("Autocomplete's returned place contains no geometry");
+				  window.parent.myAlert("Please select one entry below the textbox for the autocomplete!");
+				  return;
+				}
+				//console.log(place.address_components[0].types[0]);
+				console.log(place.address_components);
+				// If the place has a geometry, then present it on a map.
+				if (place.geometry.viewport) {
+				  map.fitBounds(place.geometry.viewport);
+				   console.log(place.geometry.location.lat());
+				  console.log(place.geometry.location.lng());
+				} else {
+				  map.setCenter(place.geometry.location);
+				  console.log(place.geometry.location.lat());
+				  console.log(place.geometry.location.lng());
+				  map.setZoom(17);  // Why 17? Because it looks good.
+				}
+				
+				marker.setIcon(/** @type {google.maps.Icon} */({
+				  url: place.icon,
+				  size: new google.maps.Size(71, 71),
+				  origin: new google.maps.Point(0, 0),
+				  anchor: new google.maps.Point(17, 34),
+				  scaledSize: new google.maps.Size(35, 35)
+				}));
+				marker.setPosition(place.geometry.location);
+				marker.setVisible(true);
+				place_result = place;
+				var address = '';
+				if (place.address_components) {
+				
+				  address = [
+					(place.address_components[0] && place.address_components[0].short_name || ''),
+					(place.address_components[1] && place.address_components[1].short_name || ''),
+					(place.address_components[2] && place.address_components[2].short_name || '')
+				  ].join(' ');
+				}
+
+				infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + address);
+				infowindow.open(map, marker);
+			  });
+
+			  // Sets a listener on a radio button to change the filter type on Places
+			  // Autocomplete.
+			  function setupClickListener(id, types) {
+				var radioButton = document.getElementById(id);
+				radioButton.addEventListener('click', function() {
+				  autocomplete.setTypes(types);
+				});
+			  }
+
+			  setupClickListener('changetype-geocode', ['geocode']);
+			}
+			
+			function get_place_info(){
+				var L_name;
+				var L_city;
+				var L_state;
+				var L_longitude;
+				var L_latitude;
+				for (var i=0;i<place_result.address_components.length;i++)
+				{
+					switch (place_result.address_components[i].types[0].toString())
+					{
+						case 'street_number':
+							if(L_name == null){L_name = place_result.address_components[i].short_name;}
+							else {L_name =L_name+" "+ place_result.address_components[i].short_name;}
+						  break;
+						case 'route':
+						  if(L_name == null){L_name = place_result.address_components[i].short_name;}
+							else L_name =L_name+" "+ place_result.address_components[i].short_name;
+						  break;
+						case 'neighborhood':
+						  if(L_name == null){L_name = place_result.address_components[i].short_name;}
+							else L_name =L_name+" "+ place_result.address_components[i].short_name;
+						  break;
+					  case 'sublocality_level_1':
+						  if(L_city == null){L_city = place_result.address_components[i].short_name;}
+							else L_city =L_city+" "+ place_result.address_components[i].short_name;
+						  break;
+						case 'sublocality':
+						  if(L_city == null){L_city = place_result.address_components[i].short_name;}
+							else L_city =L_city+" "+ place_result.address_components[i].short_name;
+						  break;
+						case 'administrative_area_level_2':
+						  if(L_city == null){L_city = place_result.address_components[i].short_name;}
+							else L_city =L_city+" "+ place_result.address_components[i].short_name;
+						  break;
+						case 'locality':
+						  if(L_city == null){L_city = place_result.address_components[i].short_name;}
+							else L_city =L_city+" "+ place_result.address_components[i].short_name;
+						  break;
+						case 'administrative_area_level_1':
+						  if(L_state == null){L_state = place_result.address_components[i].short_name;}
+							else L_state =L_state+" "+ place_result.address_components[i].short_name;
+						  break;
+						default:
+						  break;
+					}
+				}
+				L_longitude = place_result.geometry.location.lng();
+				L_latitude = place_result.geometry.location.lat();
+				document.getElementById("news_location").value = L_name;
+				document.getElementById("news_city").value = L_city;
+				document.getElementById("news_state").value = L_state;
+				document.getElementById("news_longitude").value = L_latitude;
+				document.getElementById("news_latitude").value = L_longitude;
+				//alert(place_result.geometry.location.lng());
+				window.parent.myAlert("The location info has been filled into the location boxes.");
+				return true;
+			}
+		</script>
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAaw6H1MITmzcktfXQMGO8XX2UCxkAF3mA&signed_in=true&libraries=places&callback=initMap"
+			async defer></script>
+
+	</body>
+</html>

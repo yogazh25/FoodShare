@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Posting</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link type="text/css" rel="stylesheet" href="./css/popModal.css">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <!--<script src="http://cdn.jsdelivr.net/jquery/1.11.1/jquery.min.js"></script>-->
+	<link rel="Stylesheet" type="text/css" href="./js/myAlert/myAlert.css"/> 
+	<!--<script src="./js/myAlert/myAlert.js"></script><!-- 此js用于弹出自定义的Alert -->
+  <style>
+
+	
+    /* Set height of the grid so .sidenav can be 100% (adjust if needed) */
+    .row.content {height: 500px}
+	.col-sm-3.sidenav {width: 250px} //adjust john's blog
+      .likeRow {
+          height: 30px
+      }
+    /* Set gray background color and 100% height */
+    .sidenav {
+      background-color: #f1f1f1;
+      height: 100%;
+	  overflow:hidden;
+    }
+    
+    /* Set black background color, white text and some padding */
+    footer {
+		background-color: #555;
+		color: white;
+		padding: 5px 0 1px 0;
+		position: fixed; 
+		left: 0;
+		bottom: 0;
+		width: 100%;	
+		float: left;	  
+    }
+	
+	
+    
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height: auto;} 
+    }
+      li {
+          list-style-type: none;
+      }
+
+	<!--
+	/* overlay styles, all needed */
+	.overlay {
+		position: absolute;
+		left:200px;
+		top:220px;
+		
+		height: 100%;
+		width: 100%;
+		background-color: rgba(0,0,0,0.7);
+		z-index: 10;
+	}
+	-->
+  </style>
+</head>
+<body >
+
+<!--<div class="overlay"></div>-->
+	<script src="./js/post.js"></script>
+<!--<script src="./js/jquery.overlay.min.js" type="text/javascript"></script>-->
+
+<!--navbar-inverse-->
+	<nav class="navbar navbar-inverse" id="myHeaderbar" style = "position:fixed;right:0;left:0;z-index:1030" >
+		<div class="container-fluid;" >
+			<div class="navbar-header"  >
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar" >
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>                        
+				</button>
+				<li><a href="#"><img src="image/foodIcon.png" width ="50" height="50" ></a></li> 
+			</div>
+			<div class="collapse navbar-collapse" id="myNavbar">
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="#">Home</a></li>
+					<li><a href="#Home">My Home</a></li>
+				</ul>
+				<form class="navbar-form navbar-left" role="search">
+					<div class="form-group input-group">
+						<input type="text" class="form-control" placeholder="Search..">
+							<span class="input-group-btn">
+								<button class="btn btn-default" type="button">
+									<span class="glyphicon glyphicon-search"></span>
+								</button>
+							</span>        
+					</div>
+				</form>
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="#"><span class="glyphicon glyphicon-globe"></span></a></li>  
+					<li><a href="#"><span class="glyphicon glyphicon-transfer"></span></a></li>  
+				<!--<li><a href="#"><span class="glyphicon glyphicon-user"></span> My Account</a></li>-->
+					<li class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#">
+						<span class="glyphicon glyphicon-user"></span> My Account <span class="caret"></span></a>
+						<ul class="dropdown-menu" width = "75px">
+							<li><a href="#">Privacy</a></li>
+							<li><a href="#">Log out</a></li> 
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+<!--
+<div class="overlay"></div>
+<div class="modal">I'm the modal window!</div>
+-->
+	<div class="container-fluid">
+		<div class="row content" style= "padding: 75px 0 0 0;">
+			<div class="col-sm-3 sidenav">
+				<h4><span id="post_owner">whose</span>'s Post</h4>
+				<ul class="nav nav-pills nav-stacked">
+					<li class="active"><a href="#section1">Home</a></li>
+					<li><a href="#section2">Posts</a></li>
+					<li><a href="#section3">Friend</a></li>
+					<li><a href="#section3">Profile</a></li>
+				</ul><br>
+				<div class="input-group">
+					<input type="text" class="form-control" placeholder="Search Post..">
+						<span class="input-group-btn">
+							<button class="btn btn-default" type="button">
+							<span class="glyphicon glyphicon-search"></span>
+							</button>
+						</span>
+				</div>
+			</div>
+
+			<div class="col-sm-9">
+				<h4><small>POSTS</small></h4>
+				<hr>
+				<!--<h2>Officially Blogging</h2>-->
+				<h2><span id="title">title</span></h2>
+				<h5><span class="glyphicon glyphicon-time"></span>  Post by <span id="post_owner2"> whose </span>, <span id="post_time">when</span><!--Post by John Doe, Sep 24, 2015.-->
+					<a id = "location_link" href="javascript:void(0)" target="_blank" onclick="fun_a()">
+						<span class="glyphicon glyphicon-map-marker">
+						<!--<a href="#" data-toggle="tooltip" data-placement="bottom" title="Hooray!" ><span id="post_location">where</span></a>-->
+							<button class="hintModal" style='background-color: transparent; border: 0;'><span id="post_location">where</span>
+					</a>
+								<div class="hintModal_container">
+									<span id = location_detail>
+										Name: <span id="location_name"></span></a><br>
+										City: <span id="location_city"></span><br>
+										State: <span id="location_state"></span><br>
+										<span id="location_longitude"></span>, <span id="location_latitude"></span><br>
+									</span>
+								</div>
+							</button>
+							<button id ="like_loca" type="button" class="btn btn-default btn-sm" style='background-color: transparent; border: 0;outline:none;' onclick = "fun_location_like()">
+									<span id = 'like_placebutton' class="glyphicon glyphicon-thumbs-up" style='color: ' ></span> <text id = 'like_placecount' style='color: '>Good Place!</text>
+							</button>    
+						</span>	
+				</h5>
+				
+				<span id="visi" style="display:none">
+					<!--<h5><span class="label label-success">Lorem</span></h5>--><br>
+					<p><span id="post_content">Here are all the words.</span></p>
+					<span><img id="post_image" style="display:block;width:50%;" src="" alt="some_text"></span><br><br>
+					<span><video id="media" style="display:block;width:50%;" controls>
+														<source id="post_video" src=" " type="video/mp4">
+														</video></span><br>
+					<div class="likeRow">
+						<div class="col-sm-12">
+							<div class=" text-right">
+								<div class="panel-body">
+									<button id ="like_post" type="button" class="btn btn-default btn-sm" style='background-color: transparent; border: 0;outline:none;' onclick = "fun_post_like()">
+										<span id = 'like_postbutton' class="glyphicon glyphicon-thumbs-up" style='color: ' ></span> <text id = 'like_postcount' style='color: '>Good Post!</text>
+									</button>     
+								</div>
+							</div>
+						</div>
+					</div>   
+					<hr>
+
+					<h4>Leave a Comment:</h4>
+					<form role="form">
+						<div class="form-group">
+							<textarea id ='static_comment'class="form-control" rows="3" required></textarea>
+						</div>
+						<span type="submit" class="btn btn-success" onclick = 'static_submit()'>Submit</span>
+					</form>
+					<br><br>
+			  
+					<p><span class="badge">C</span> Comments:</p><br>      
+			<!--		<span class="post_comments">Here lists all the comments.</span> -->
+					<div id='CommentContainer'>
+							<style>
+								 a:hover{ text-decoration:none; }
+							</style>
+ <!--
+						<div class="" id="resultContainer1" style="padding-bottom:50px" >
+							
+							<div class="col-sm-2 text-center">
+								<img src="../Media/userphoto/John_Terry.png" class="img-circle" height="65" width="65" alt="Avatar">
+							</div>
+							<div class="col-sm-10" id = "com1">
+								<a href="../user page/user.html?user=chelseaisgood"><h4 style="display:inline">Anja</a> <small style="padding:0 10px 0 20px">Sep 29, 2015, 9:12 PM</small></h4> <a href="../user page/user.html?user=chelseaisgood"><h4 style="display:inline;color:lightblue;">@chelseaisgood</h4></a> 
+								<input type='button' style="display:inline;color:green;float:right;" onclick='reply_method(this.name, this.alt)' alt ='chelseaisgood' name = 'com1' value = 'reply' ></input>
+								<p>Keep up the GREAT work! I am cheering for you!! Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+								<!--
+								<form role='form' style='padding-bottom:50px'>\
+									<div class='form-group'>\
+										<textarea class='form-control' rows='3' required style='resize: vertical;'></textarea>\
+									</div>\
+									<button type='submit' class='btn btn-success' style='float:right'>Reply</button>\
+								</form>\
+						
+							</div>
+							<div>
+								<hr>
+								<hr>
+								<br>
+							</div>
+						</div>
+						
+						<div class="" id="resultContainer2" style="padding-bottom:50px" >
+							
+							<div class="col-sm-2 text-center">
+								<img src="../Media/userphoto/John_Terry.png" class="img-circle" height="65" width="65" alt="Avatar">
+							</div>
+							<div class="col-sm-10" id = "com2">
+								<a href="../user page/user.html?user=chelseaisgood"><h4 style="display:inline">Anja</a> <small style="padding:0 10px 0 20px">Sep 29, 2015, 9:12 PM</small></h4> <a href="../user page/user.html?user=chelseaisgood"><h4 style="display:inline;color:lightblue;">@chelseaisgood</h4></a> 
+								<input type='button' style="display:inline;color:green;float:right;" onclick='reply_method(this.name, this.alt)' alt ='John_Terry' name = 'com2' value = 'reply' ></input>
+								<p>Keep up the GREAT work! I am cheering for you!! Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+							</div>
+							<div>
+								<hr>
+								<hr>
+								<br>
+							</div>
+						</div>
+		-->				
+						
+					</div>  
+		
+					<div style="margin-bottom:30px;position:relative" >
+						<h1 style="margin-bottom:30px;display:'none';"></h1>
+					</div>
+				</span>
+			</div>
+		</div>
+	</div>
+	<div>
+		<hr>
+		<hr>
+		<br>
+	</div>
+	<div class='messagePopOut' style='display:none'>
+         	<div class='messagePopText'>
+         		
+         	</div>
+         	<div class='messagePopButton'>
+         		OK
+         	</div>        	
+	 </div>
+	<footer class="container-fluid">
+		<p style="text-align: center">Food Social Team © 2016</p>
+	</footer>
+
+	<script src="./js/popModal.js"></script>
+</body>
+</html>

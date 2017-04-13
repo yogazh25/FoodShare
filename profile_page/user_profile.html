@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <!-- This file has been downloaded from Bootsnipp.com. Enjoy! -->
+        <title>User_Profile</title>
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+            <link rel="Stylesheet" type="text/css" href="myAlert.css"/>
+        <style type="text/css">
+<!--            .user-row {
+                margin-bottom: 14px;
+            }
+
+            .user-row:last-child {
+                margin-bottom: 0;
+            }
+
+            .dropdown-user {
+                margin: 13px 0;
+                padding: 5px;
+                height: 100%;
+            }
+
+            .dropdown-user:hover {
+                cursor: pointer;
+            }
+-->
+            .table-user-information > tbody > tr {
+                border-top: 1px solid rgb(221, 221, 221);
+            }
+
+            .table-user-information > tbody > tr:first-child {
+                border-top: 10px;
+            }
+
+
+            .table-user-information > tbody > tr > td {
+                border-top: 10px;
+            }
+            .toppad
+            { margin-left:20px;
+            }
+             .navbar {
+	          background-color: lightsteelblue;
+	      }
+	       .btn{
+                position: relative;
+                display: block;
+                left: 600px;
+                height: 35px;
+                width: 150px;
+                color: white;
+                border: none;
+                background: #2b99ce;
+                font-weight: 450;
+                letter-spacing: 1px;
+                text-align: center;
+            }
+             .btn:hover{
+                background: #3ba9de;
+            }
+
+        </style>
+        <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+        <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+        <script src="myAlert.js"></script>
+
+    </head>
+
+    <body style = "background-color:transparent">
+        <!--drawing the container of user's profile begin!-->
+        <div class="container">
+            <div class="row">
+				<div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
+					<div class="panel panel-info">
+						<div class="panel-heading">
+							<h3 class="panel-title"> 
+								<span id = "user_name_title">User_name</span>
+								<input id="addFriend" style='position:relative; left:450px' class="btn" type="button" value="Add As Friend" onclick = "addFriend();"></input>
+							</h3>
+						</div>
+					<div class="panel-body">
+						<div class="row">
+							<div class="col-md-3 col-lg-3 " align="center"> <span ><img id = "pic" alt="User Pic" src="../face.png" class="img-circle img-responsive"></span></div>
+								<div class=" col-md-11 col-lg-11 "> 
+									<table class="table table-user-information">
+										<tbody>
+											<tr>
+												<td>User Name:</td>
+												<td><span id = "user_name"></span></td>
+											</tr>
+											<tr>
+												<td>First Name: </td>
+												<td><span id = "first_name"></span></td>
+											</tr>
+											<tr>
+												<td>Last Name: </td>
+												<td><span id = "last_name"></span></td>
+											</tr>
+											<tr>
+												<td>Last Login Date:</td>
+												<td><span id = "lasttime_access"></span></td>
+											</tr>
+											<tr>
+												<td>Date of Birth:</td>
+												<td><span id = "date_of_birth"></span></td>
+											</tr>
+											<tr>
+												<td>Gender:</td>
+												<td><span id = "gender"></span></td>
+											</tr>
+											</tr>
+												<td>Residence:</td>
+												<td><span id = "residence"></span></td>   
+											</tr>
+											<tr>
+												<td>Email:</td>
+												<td><a><span id = "email"></span></a></td>
+											</tr>
+												<td>About me:</td>
+												<td><span id = "biography"></span></td>   
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+               <!--Drawing the container of user's profile END-->
+					</div>
+				</div>
+			</div>
+        </div>
+         <div class='messagePopOut' style='display:none'>
+          <div class='messagePopText'>
+            
+          </div>
+          <div class='messagePopButton'>
+            OK
+          </div>  
+        </div> 
+		<script src="./js/user_profile.js"></script>
+    </body>
+</html>

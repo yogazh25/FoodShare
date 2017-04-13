@@ -1,0 +1,31 @@
+<html>
+
+<body>
+	<textarea tabindex="1" class="ie6ta" name="contenthf.contenthf" onkeydown="keySend(event);" title="按ctrl+enter直接发送"></textarea>
+</body>
+<script>
+	function sbFrm() {
+		var Contenthf=document.getElementById("Contenthf");
+		var txtAr = Contenthf.getElementsByTagName("textarea")[0];
+		if (txtAr.innerHTML == "") {
+			txtAr.focus();
+			return false;
+		}
+		Contenthf.submit();
+		window.opener.afterReload();
+		return false;
+	}
+
+	function keySend(event) {
+		if (event.ctrlKey && event.keyCode == 13) {
+			sbFrm();
+		}
+	}
+
+	function afterReload() {
+		setTimeout(function () {
+			window.location.reload();
+		}, 1000);
+	}
+</script>
+</html>

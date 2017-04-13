@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <!-- This file has been downloaded from Bootsnipp.com. Enjoy! -->
+        <title>User_Profile</title>
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+        <style type="text/css">
+<!--		
+            .user-row {
+                margin-bottom: 14px;
+            }
+
+            .user-row:last-child {
+                margin-bottom: 0;
+            }
+
+            .dropdown-user {
+                margin: 13px 0;
+                padding: 5px;
+                height: 100%;
+            }
+
+            .dropdown-user:hover {
+                cursor: pointer;
+            }
+-->
+            .table-user-information > tbody > tr {
+                border-top: 1px solid rgb(221, 221, 221);
+            }
+
+            .table-user-information > tbody > tr:first-child {
+                border-top: 10px;
+            }
+
+
+            .table-user-information > tbody > tr > td {
+                border-top: 10px;
+            }
+            .toppad {
+                margin-top:0px;
+            }
+             .navbar {
+                background-color: lightsteelblue;
+            }
+             .form-group {
+                margin: 15px 0px 20px 0px;
+                width: 100%;
+                height: 35px;
+            }
+
+             .form-group .label1 {
+                font-weight: 700;
+                font-size: 15px;
+                padding: 10px;
+                color: rgba(120,120,120,0.9);
+                text-align: left;
+                position: absolute;
+                left: 160px;
+                z-index: 1;
+            }
+
+            .form-control {
+                font-family: 微软雅黑;
+                font-weight: 400;
+                padding: 10px 20px 10px 20px;
+                width: 230px;
+                position: relative;
+                font-size: 14px;
+                left: 40%;
+            }
+            .btn{
+                position: relative;
+                display: block;
+                left: 278px;
+                top: 0px;
+                height: 35px;
+                width: 150px;
+                color: #fff;
+                border: none;
+                background: #2b99ce;
+                font-weight: 600;
+                letter-spacing: 5px;
+                text-align: center;
+            }
+             .btn:hover{
+                background: #3ba9de;
+            }
+        
+
+        </style>
+        <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+        <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+    </head>
+
+    <body style = "background-color:transparent">
+        <!--drawing the container of user's profile begin!-->
+            <!--<script src="simple_user_profile.js"></script>-->
+            <div class="container">
+				<div class="row">
+					<div class="col-md-9 col-md-offset-0  toppad" >
+						<div class="panel panel-info">
+							<div class="panel-heading">
+								<h3 class="panel-title"><span id = "edit_profile">Edit Your Profile</span></h3>
+							</div>
+							<div class="panel-body">
+								<div class="row">
+									<div class="col-md-3 col-lg-3 " align="center"> <span ><img id = "pic" alt="User Pic" src="../face.png" class="img-circle img-responsive"></span></div>
+									<div class=" col-md-11 col-lg-11 "> 
+										<form id = "form of user info edition">
+											<div class = "form-group">
+												<label class = "label1" for="name"> User Name:</label>
+												<input type="text" name = "name" class="form-control" id="edit_user_name" placeholder="" >
+												<label for="checkName"></label>
+											</div>
+											<div class="form-tip" id="name-tip" style="display:none;"></div>
+											<div class = "form-group">
+												<label class = "label1" for="first_name"> First Name:</label>
+												<input type="text" name = "first_name" class="form-control" id="edit_first_name" placeholder="No blank space!">
+											</div>
+											<div class="form-tip" id="first_name-tip" style="display:none;"></div>
+											<div class = "form-group">
+												<label class = "label1" for="last_name"> Last Name:</label>
+												<input type="text" name = "last_name" class="form-control" id="edit_last_name" placeholder="No blank space!">
+											</div>
+											<div class="form-tip" id="last_name-tip" style="display:none;"></div> 
+											<div class="form-tip" style="text-align:center;front-size:15px; front-weight:700;color:rgba(120,120,0.9)"> 
+												<div class = "form-group">
+													<label class = "label1" style="inline-block"> Gender:</label>
+													<div class="radio" style="position:absolute; padding:1px 0px 100px 240px;">
+														<label><input type="radio" class="choiceBox" id="edit_male" value="Male" name="gender" > Male</label>
+														<label><input type="radio" class="choiceBox" id="edit_female" value="Female" name="gender" > Female</label>
+														<label><input type="radio" class="choiceBox" id="edit_other" value="Other" name="gender" > Other</label>
+													</div>
+												</div>
+											</div>
+											<div class = "form-group">
+												<label class = "label1" for="date_of_birth"> DOB:</label>
+												<input type="text" name = "date_of_birth" class="form-control" id="edit_date_of_birth" placeholder="yyyy-mm-dd">
+											</div>
+											<div class="form-tip" id="date_of_birth-tip" style="display:none;"></div>
+												<div class = "form-group">
+												<label class = "label1" for="residence"> Residence:</label>
+												<input type="text" name = "residence" class="form-control" id="edit_residence" placeholder="No blank space!">
+											</div>
+											<div class="form-tip" id="residence-tip" style="display:none;"></div>
+											<div class = "form-group" style="height:150px">
+												<label class = "label1" for="biography"> About Me:</label>
+												<textarea type="text" name = "biography" class="form-control" id="edit_biography" placeholder="Less then 100 word!" style="resize: vertical;height = 200px;"></textarea>
+											</div>
+											<div class="form-tip" id="biography-tip" ></div>  
+											<div class="form-tip" style="text-align:center;front-size:15px; front-weight:700;color:rgba(120,120,0.9)"> 
+												<div class = "form-group" >
+													<label class = "label1" > Who can view my profile:</label>
+													<div class="radio" style="position:absolute; padding:1px 0px 100px 340px;">
+														<label><input type="radio" class="privacybox" id="edit_me" value="me" name="privacy" > Only me</label>
+														<label><input type="radio" class="privacybox" id="edit_friend" value="Friends" name="privacy" > Friend</label>
+														<label><input type="radio" class="privacybox" id="edit_FOF" value="FOF" name="privacy" > FOF</label>
+														<label><input type="radio" class="privacybox" id="edit_all" value="all" name="privacy" > Anyone</label>
+													</div>
+												</div>
+											</div>
+											<span  class="btn" onclick = "update_profile()" >Save<br><br><br></span>
+										</form>
+									</div>
+								</div>
+							</div>
+               <!--Drawing the container of user's profile END-->
+						</div>
+					</div>
+				</div>
+			</div>
+        <script src="manage_profile.js"></script>
+    </body>
+</html>

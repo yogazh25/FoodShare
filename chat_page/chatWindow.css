@@ -1,0 +1,123 @@
+#chatContainer{
+			width:700px;
+			height:710px;
+			margin:0px;
+			position:absolute;
+		}
+
+		#chatTopBar{
+			height:40px;
+			background-color: lightblue;
+			border:1px solid #fff;
+			margin-bottom:15px;
+			position:relative;
+			text-align: center;
+			color:#777;
+			text-shadow:1px 1px 0 #FFFFFF;
+		}
+		#chatUsers{
+			overflow: scroll;
+			background-color:lightgray;
+			height:360px;
+			position:absolute;
+			left:0;
+			top:40px;
+			width:225px;
+		}
+
+		#chatLineHolder{
+			position:absolute;
+			height:345px;
+			width:460px;
+			top:45px;
+			right: 0;
+		}
+
+		#chatBottomBar{
+			background-color: lightblue;
+			position: absolute;
+			top:400px;
+			padding:10px;
+			height: 25px;
+			width:97%;
+			border:1px solid #fff;
+		}
+
+		
+		#name_keyword{
+			position:absolute;
+			left: 40px;
+			height: 25px;
+			width:183px;
+		}
+		
+		#chat_input{
+			left:0; 
+			width:98%;
+			height:20%;
+			bottom: 5px;
+			-webkit-border-radius:6px;
+			border-style: solid;
+  			border-color: lightgray;
+
+		}
+
+		#to_chat_user_name{
+			position: absolute;
+			top: 8px;
+			color: black;
+		}
+
+		.contact{
+			padding-left: 5px;
+			padding-top: 5px;
+
+		}
+
+		.contact span:hover{
+			cursor: pointer;
+			background-color: darkgray;
+			color: white;
+		}
+
+		.contact__photo{
+			width:25px;
+			height: 25px;
+			-webkit-border-radius:50%;
+		}
+
+		.rounded{
+			-moz-border-radius:4px;
+			-webkit-border-radius:4px;
+		}
+		
+		.chatContent{
+			overflow:scroll;
+			background-color: white;
+			height:79%;
+			padding-bottom: 2%;
+			padding-right: 3%;
+		}
+		.myMsg{
+			text-align:right;
+			padding-right:10px;
+			padding-top: 5px;
+
+
+		}
+		.notMyMsg{
+			padding-left:5px;
+			padding-top: 5px;
+
+		}
+		
+		.inputChat{
+			height:100%;
+			
+			width :470px;
+			
+		}
+		.contact_content{
+			font-size:20px;
+		}
+		
